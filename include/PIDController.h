@@ -13,6 +13,7 @@ public:
 	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki );
 	~PIDController();
 	double compute(double setpoint, double pv);
+	double getKi(), getKp(), getKd(), getMax(), getMin(),getdt(), getIntegral(), getPre_Error();
 private:
 	double Ki, Kp, Kd, max, min, dt, integral, pre_error;
 };

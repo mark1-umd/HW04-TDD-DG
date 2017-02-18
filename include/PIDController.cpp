@@ -15,6 +15,7 @@ public:
 	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki );
 	~PIDController();
 	double compute(double setpoint, double pv);
+	double getKi(), getKp(), getKd(), getMax(), getMin(),getdt(), getIntegral(), getPre_Error();
 private:
 	double Ki, Kp, Kd, max, min, dt, integral, pre_error;
 };
@@ -37,4 +38,29 @@ PIDController::PIDController(double dt, double max, double min, double Kp, doubl
 }
 PIDController::~PIDController(){
 
+}
+
+PIDController::getKi(){
+	return Ki;
+}
+PIDController::getKp(){
+	return Kp;
+}
+PIDController::getKd(){
+	return Kd;
+}
+PIDController::getMax(){
+	return max;
+}
+PIDController::getMin(){
+	return min;
+}
+PIDController::getDt(){
+	return dt;
+}
+PIDController::getIntegral(){
+	return integral;
+}
+PIDController::getPre_Error(){
+	return pre_error;
 }
