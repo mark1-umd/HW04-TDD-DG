@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "PIDController.h"
+#include "../include/PIDController.h"
 
 
 TEST(PIDControllerTest, testPIDControllerCompute)
