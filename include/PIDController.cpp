@@ -9,65 +9,53 @@
 #include <cmath>
 #include <iostream>
 
-
-class PIDController{
-public:
-	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki );
-	~PIDController();
-	double compute(double setpoint, double pv);
-	double getKi();
-	double getKp();
-	double getKd();
-	double getMax();
-	double getMin();
-	double getDt();
-	double getIntegral();
-	double getPre_Error();
-private:
-	double Ki, Kp, Kd, max, min, dt, integral, pre_error;
-};
-
-PIDController::compute(double setpoint, double pv){
-
-	return 0.0;
-}
-
 PIDController::PIDController(double dt, double max, double min, double Kp, double Kd, double Ki) :
 		dt(dt),
-		min(min),
 		max(max),
-		Ki(Ki),
+		min(min),
 		Kp(Kp),
 		Kd(Kd),
+		Ki(Ki),
 		pre_error(0),
 		integral(0)
 {
+}
+PIDController::PIDController(){
+
 }
 PIDController::~PIDController(){
 
 }
 
-PIDController::getKi(){
+void PIDController::Testing(){
+	std::cout << "Successful build " << std::endl;
+}
+
+double PIDController::compute(double setpoint, double pv){
+
+	return 0.0;
+}
+double PIDController::getKi(){
 	return Ki;
 }
-PIDController::getKp(){
+double PIDController::getKp(){
 	return Kp;
 }
-PIDController::getKd(){
+double PIDController::getKd(){
 	return Kd;
 }
-PIDController::getMax(){
+double PIDController::getMax(){
 	return max;
 }
-PIDController::getMin(){
+double PIDController::getMin(){
 	return min;
 }
-PIDController::getDt(){
+double PIDController::getDt(){
 	return dt;
 }
-PIDController::getIntegral(){
+double PIDController::getIntegral(){
 	return integral;
 }
-PIDController::getPre_Error(){
+double PIDController::getPre_Error(){
 	return pre_error;
 }

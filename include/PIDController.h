@@ -5,12 +5,15 @@
 * Class that implements a PID Controller object.
 */
 
-#ifndef _PIDController_H_
-#define _PIDController_H_
+#ifndef GUARD_PIDController_H
+#define GUARD_PIDController_H
 
 class PIDController{
+private:
+	double dt,max,min, Kp, Kd, Ki, pre_error, integral;
 public:
-	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki );
+	PIDController();
+	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki);
 	~PIDController();
 	double compute(double setpoint, double pv);
 	double getKi();
@@ -21,8 +24,7 @@ public:
 	double getDt();
 	double getIntegral();
 	double getPre_Error();
-private:
-	double Ki, Kp, Kd, max, min, dt, integral, pre_error;
+	void Testing();
 };
 
 #endif
