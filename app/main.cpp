@@ -4,7 +4,6 @@
 
 int main()
 {
-    PIDController p = PIDController();
-    p.Testing();
+	PIDController controller = PIDController(1,2,.4,2,3,0);
     return 0;
 }

@@ -9,6 +9,14 @@
 #include <cmath>
 #include <iostream>
 
+/** @brief Constructor for PIDController.
+   * @param [in] dt double - loop wait time.
+   * @param [in] max double - max acceptable output.
+   * @param [in] min double - min acceptable output.
+   * @param [in] Kp double - proportional gain.
+   * @param [in] Kd double - deriv gain.
+   * @param [in] Ki double - integral gain.
+   */
 PIDController::PIDController(double dt, double max, double min, double Kp, double Kd, double Ki) :
 		dt(dt),
 		max(max),
@@ -24,10 +32,11 @@ PIDController::~PIDController(){
 
 }
 
-void PIDController::Testing(){
-	std::cout << "Successful build " << std::endl;
-}
+/** @brief Compute the correction based on the set point and process variable
+   * @param [in] setPoint a double for the current setpoint for the plant's output
+   * @param [in] processVariable a double for the current measurement.
 
+   */
 double PIDController::compute(double setpoint, double pv){
 
 	return 0.0;
