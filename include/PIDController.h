@@ -12,7 +12,6 @@ class PIDController{
 private:
 	double dt,max,min, Kp, Kd, Ki, pre_error, integral;
 public:
-	PIDController();
 	PIDController( double dt, double max, double min, double Kp, double Kd, double Ki);
 	~PIDController();
 	double compute(double setpoint, double pv);

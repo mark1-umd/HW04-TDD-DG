@@ -20,9 +20,6 @@ PIDController::PIDController(double dt, double max, double min, double Kp, doubl
 		integral(0)
 {
 }
-PIDController::PIDController(){
-
-}
 PIDController::~PIDController(){
 
 }
