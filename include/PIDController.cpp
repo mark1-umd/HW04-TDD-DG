@@ -16,6 +16,8 @@
    * @param [in] Kp double - proportional gain.
    * @param [in] Kd double - deriv gain.
    * @param [in] Ki double - integral gain.
+   * @param pre_error double - default to zero.
+   * @param integral double - default to zero.
    */
 PIDController::PIDController(double dt, double max, double min, double Kp, double Kd, double Ki) :
 		dt(dt),

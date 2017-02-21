@@ -1,7 +1,7 @@
 /** @file PIDController.cpp
 * @brief a PID Controller class
 * @author Daniel Gellman
-* @copyright
+* @copyright Daniel Gellman
 * Class that implements a PID Controller object.
 */
 
