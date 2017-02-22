@@ -1,6 +1,7 @@
 /** @file PIDController.cpp
 * @brief a PID Controller class
 * @author Daniel Gellman
+ * @author Mark Jenkins
 * @copyright
 * Class that implements a PID Controller object.
 */
@@ -8,6 +9,7 @@
 #include "PIDController.h"
 #include <cmath>
 #include <iostream>
+#include <chrono>
 
 /** @brief Constructor for PIDController.
    * @param [in] dt double - loop wait time.
@@ -41,7 +43,22 @@ PIDController::~PIDController(){
    */
 double PIDController::compute(double setpoint, double pv){
 
-	return 0.0;
+  // calculate the amount of error
+  double error = setpoint - pv;
+
+  // add error to integral
+  integral += (error * dt);
+
+  // calculate the rate of change
+  double derivative = (error - pre_error) / dt;
+
+  // save the current error for next time through
+  pre_error = error;
+
+  // assume that the wait between invocations represented by dt is
+  // controlled outside of this method
+
+  return Kp * error + Ki * integral + Kd * derivative;
 }
 double PIDController::getKi(){
 	return Ki;
