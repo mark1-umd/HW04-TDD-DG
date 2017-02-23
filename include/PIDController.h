@@ -1,4 +1,4 @@
-/** @file PIDController.cpp
+/** @file PIDController.h
 * @brief a PID Controller class
 * @author Daniel Gellman
 * @copyright Daniel Gellman

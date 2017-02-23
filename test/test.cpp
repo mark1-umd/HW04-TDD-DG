@@ -6,10 +6,20 @@ TEST(PIDControllerTest, testPIDControllerComputeNonZeroPositive)
 {
 	PIDController p = PIDController(1,2,.4,5,.3,2);
 
-    EXPECT_GT(0, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, 10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_GT(0, p.compute(.45, .12));
+  /* These original DGellman tests were modified by MJenkins after
+   * consultation with DGellman.  Inequality direction accidentally
+   * specified backwards in original tests.
+   * Change made by MJenkins 2017-02-22
+   *
+   *  EXPECT_GT(0, p.compute(12.0, .4));
+   *  EXPECT_GT(0, p.compute(.45, 10));
+   *  EXPECT_GT(0, p.compute(.43, 1));
+   *  EXPECT_GT(0, p.compute(.45, .12));
+   */
+  EXPECT_LT(0, p.compute(12.0, .4));
+  EXPECT_LT(0, p.compute(.45, 10));
+  EXPECT_LT(0, p.compute(.43, 1));
+  EXPECT_LT(0, p.compute(.45, .12));
 }
 
 //Test Compute Method with negative values.
@@ -17,10 +27,20 @@ TEST(PIDControllerTest, testPIDControllerComputeNegativeValues)
 {
 	PIDController p = PIDController(1,2,.4,5,-3,-2);
 
-    EXPECT_GT(0, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, -10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_GE(0, p.compute(.45, .12));
+  /* These original DGellman tests were modified by MJenkins after
+   * consultation with DGellman.  Inequality direction accidentally
+   * specified backwards in original tests.
+   * Change made by MJenkins 2017-02-22
+   *
+   *  EXPECT_GT(0, p.compute(12.0, .4));
+   *  EXPECT_GT(0, p.compute(.45, -10));
+   *  EXPECT_GT(0, p.compute(.43, 1));
+   *  EXPECT_GE(0, p.compute(.45, .12));
+   */
+  EXPECT_LT(0, p.compute(12.0, .4));
+  EXPECT_LT(0, p.compute(.45, -10));
+  EXPECT_LT(0, p.compute(.43, 1));
+  EXPECT_LE(0, p.compute(.45, .12));
 }
 
 //Test Compute Method with zero values.
