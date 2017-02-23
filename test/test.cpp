@@ -48,10 +48,10 @@ TEST(PIDControllerTest, testPIDControllerComputeZeroValues)
 {
 	PIDController p = PIDController(1,2,.4,0,0,0);
 
-    EXPECT_EQ(1, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, -10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_LT(1, p.compute(.45, .12));
+    EXPECT_LE(0, p.compute(12.0, .4));
+    EXPECT_LE(0, p.compute(.45, -10));
+    EXPECT_LE(0, p.compute(.43, 1));
+    EXPECT_LT(0, p.compute(.45, .12));
 }
 
 //Test Compute Method with Ki zero value.
@@ -59,43 +59,43 @@ TEST(PIDControllerTest, testPIDControllerComputeKiZero)
 {
 	PIDController p = PIDController(1,2,.4,2,3,0);
 
-    EXPECT_GT(1, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, -10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_LT(1, p.compute(.45, .12));
+    EXPECT_LE(0, p.compute(12.0, .4));
+    EXPECT_LE(0, p.compute(.45, -10));
+    EXPECT_LE(0, p.compute(.43, 1));
+    EXPECT_LE(0, p.compute(.45, .12));
 }
 //Test Compute Method with Kd zero value.
 TEST(PIDControllerTest, testPIDControllerComputeKdZero)
 {
 	PIDController p = PIDController(1,2,.4,2,0,2);
 
-    EXPECT_GT(1, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, -10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_LT(1, p.compute(.45, .12));
+    EXPECT_LE(0, p.compute(12.0, .4));
+    EXPECT_LE(0, p.compute(.45, -10));
+    EXPECT_LE(0, p.compute(.43, 1));
+    EXPECT_LT(0, p.compute(.45, .12));
 }
 //Test Compute Method with Kp zero value.
 TEST(PIDControllerTest, testPIDControllerComputeKpZero)
 {
 	PIDController p = PIDController(1,2,.4,0,1,2);
 
-    EXPECT_GT(1, p.compute(12.0, .4));
-    EXPECT_GT(0, p.compute(.45, -10));
-    EXPECT_GT(0, p.compute(.43, 1));
-    EXPECT_LT(1, p.compute(.45, .12));
+    EXPECT_LE(0, p.compute(12.0, .4));
+    EXPECT_LE(0, p.compute(.45, -10));
+    EXPECT_LE(0, p.compute(.43, 1));
+    EXPECT_LE(0, p.compute(.45, .12));
 }
 
 //Test Initialization Method.
 TEST(PIDControllerTest, testPIDControllerInitialize)
 {
-	PIDController p = PIDController(1,2,.4,0,.3,2);
+	PIDController p = PIDController(1,2,.4,3,.3,2);
 
-	EXPECT_GT(0, p.getMin());
-	EXPECT_GT(0, p.getMax());
-	EXPECT_GT(0, p.getIntegral());
-	EXPECT_GT(0, p.getKi());
-	EXPECT_GT(0, p.getKd());
-	EXPECT_GT(0, p.getKp());
-	EXPECT_GT(0, p.getDt());
-	EXPECT_GT(0, p.getPre_Error());
+	EXPECT_DOUBLE_EQ(.4, p.getMin());
+	EXPECT_DOUBLE_EQ(2, p.getMax());
+	EXPECT_DOUBLE_EQ(0, p.getIntegral());
+	EXPECT_DOUBLE_EQ(2, p.getKi());
+	EXPECT_DOUBLE_EQ(.3, p.getKd());
+	EXPECT_DOUBLE_EQ(3, p.getKp());
+	EXPECT_DOUBLE_EQ(1, p.getDt());
+	EXPECT_DOUBLE_EQ(0, p.getPre_Error());
 }
