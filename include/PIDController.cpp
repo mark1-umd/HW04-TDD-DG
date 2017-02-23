@@ -61,6 +61,8 @@ double PIDController::compute(double setpoint, double pv){
 
   // apply the correction factor's maximum and minimum allowable
   // values specified in the private variables max and min
+  // (this purpose for the min/max communicated in private e-mail
+  //  with DGellman 2017-02-22
   double correction = Kp * error + Ki * integral + Kd * derivative;
   if (correction > max)
     correction = max;
