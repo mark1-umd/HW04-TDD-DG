@@ -28,9 +28,9 @@ script:
   - mkdir build
   - cd build
   - cmake ..
-  - ./configure --enable-gcov
   - make
   - test/cpp-test
+  - nm test/cpp-test | grep gcov
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
