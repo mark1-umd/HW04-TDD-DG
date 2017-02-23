@@ -9,7 +9,6 @@
 #include "PIDController.h"
 #include <cmath>
 #include <iostream>
-#include <chrono>
 
 /** @brief Constructor for PIDController.
    * @param [in] dt double - loop wait time.
@@ -43,6 +42,11 @@ PIDController::~PIDController(){
    */
 double PIDController::compute(double setpoint, double pv){
 
+  // This implementation assumes that this method will be called
+  // repeatedly at intervals equal to dt by a client of the
+  // PIDController object
+  // MJenkins 2017-02-22
+
   // calculate the amount of error
   double error = setpoint - pv;
 
@@ -52,13 +56,18 @@ double PIDController::compute(double setpoint, double pv){
   // calculate the rate of change
   double derivative = (error - pre_error) / dt;
 
-  // save the current error for next time through
+  // save the current error for next invocation
   pre_error = error;
 
-  // assume that the wait between invocations represented by dt is
-  // controlled outside of this method
+  // apply the correction factor's maximum and minimum allowable
+  // values specified in the private variables max and min
+  double correction = Kp * error + Ki * integral + Kd * derivative;
+  if (correction > max)
+    correction = max;
+  else if (correction < min)
+    correction = min;
 
-  return Kp * error + Ki * integral + Kd * derivative;
+  return correction;
 }
 double PIDController::getKi(){
 	return Ki;
