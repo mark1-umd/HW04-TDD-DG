@@ -1,7 +1,7 @@
 # HW4 Test Drive Development
 ##Class Design and Unit Tests: DGellman; Implementation MJenkins
-[![Build Status](https://travis-ci.org/mark1-umd/HW04-TDD-DG.svg?branch=MRJcodePIDController)](https://travis-ci.org/mark1-umd/HW04-TDD-DG)
-[![Coverage Status](https://coveralls.io/repos/github/mark1-umd/HW04-TDD-DG/badge.svg?branch=MRJcodePIDController)](https://coveralls.io/github/mark1-umd/HW04-TDD-DG?branch=MRJcodePIDController)
+[![Build Status](https://travis-ci.org/mark1-umd/HW04-TDD-DG.svg?branch=master)](https://travis-ci.org/mark1-umd/HW04-TDD-DG)
+[![Coverage Status](https://coveralls.io/repos/github/mark1-umd/HW04-TDD-DG/badge.svg?branch=master)](https://coveralls.io/github/mark1-umd/HW04-TDD-DG?branch=master)
 ---
 
 ## Overview
@@ -25,9 +25,7 @@ ENPM 808X Homework Week 4 - Test-Driven Development (TDD) Exercise
 ## Review of current state and possible future work
 
 - Discussion on 2017-02-23 regarding implementation and unit test results yielded:
-
-..* Unit tests could be improved by using eq comparisons instead of just le, lt, ge, gt
-
-..* Potential for Travis/Coveralls badge confusion exists when project merged back to designer's repo from implementor's repo
+    * Unit tests could be improved by using eq comparisons instead of just le, lt, ge, gt
+    * Potential for Travis/Coveralls badge confusion exists when project merged back to designer's repo from implementor's repo
 
 
