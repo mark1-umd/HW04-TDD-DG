@@ -25,7 +25,9 @@ ENPM 808X Homework Week 4 - Test-Driven Development (TDD) Exercise
 ## Review of current state and possible future work
 
 - Discussion on 2017-02-23 regarding implementation and unit test results yielded:
+
 .- Unit tests could be improved by using eq comparisons instead of just le, lt, ge, gt
+
 .- Potential for Travis/Coveralls badge confusion exists when project merged back to designer's repo from implementor's repo
 
 
