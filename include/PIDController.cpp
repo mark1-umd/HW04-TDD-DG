@@ -2,7 +2,7 @@
 * @brief a PID Controller class
 * @author Daniel Gellman
  * @author Mark Jenkins
-* @copyright
+ * @copyright 2017 Daniel Gellman and Mark Jenkins
 * Class that implements a PID Controller object.
 */
 
@@ -36,8 +36,8 @@ PIDController::PIDController(double dt, double max, double min, double Kp,
 PIDController::~PIDController() {
 }
 /** @brief Compute the correction based on the set point and process variable
- * @param [in] setPoint a double for the current setpoint for the plant's output
- * @param [in] processVariable a double for the current measurement.
+ * @param [in] setpoint a double for the current setpoint for the plant's output
+ * @param [in] pv a double for the current measurement of the process variable
  */
 double PIDController::compute(double setpoint, double pv) {
   // This implementation assumes that this method will be called
@@ -69,27 +69,51 @@ double PIDController::compute(double setpoint, double pv) {
 
   return correction;
 }
+/** @brief Return current setting for coefficient Ki
+ *
+ */
 double PIDController::getKi() {
   return Ki;
 }
+/** @brief Return current setting for coefficient Kp
+ *
+ */
 double PIDController::getKp() {
   return Kp;
 }
+/** @brief Return current setting for coefficient Kd
+ *
+ */
 double PIDController::getKd() {
   return Kd;
 }
+/** @brief Return current setting for correction maximum value
+ *
+ */
 double PIDController::getMax() {
   return max;
 }
+/** @brief Return current setting for correction minimum value
+ *
+ */
 double PIDController::getMin() {
   return min;
 }
+/** @brief Return current setting for duration of time between compute calls
+ *
+ */
 double PIDController::getDt() {
   return dt;
 }
+/** @brief Return current value of the internal error integral
+ *
+ */
 double PIDController::getIntegral() {
   return integral;
 }
+/** @brief Return current value for the internal "previous error" store
+ *
+ */
 double PIDController::getPre_Error() {
   return pre_error;
 }

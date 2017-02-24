@@ -25,7 +25,6 @@ before_install:
 
 script:
   - export CXX=$COMPILER;
-  - ./configure --enable-gcov && make && make check
   - mkdir build
   - cd build
   - cmake ..
