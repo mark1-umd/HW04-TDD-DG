@@ -25,13 +25,12 @@ before_install:
 
 script:
   - export CXX=$COMPILER;
+  - ./configure --enable-gcov && make && make check
   - mkdir build
   - cd build
   - cmake ..
   - make
   - test/cpp-test
-  - nm test/cpp-test | grep ZTVN
-  - nm test/cpp-test | grep gcov
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
