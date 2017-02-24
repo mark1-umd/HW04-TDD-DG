@@ -2,7 +2,7 @@
 * @brief a PID Controller class
 * @author Daniel Gellman
  * @author Mark Jenkins
-* @copyright
+ * @copyright 2017 Daniel Gellman and Mark Jenkins
 * Class that implements a PID Controller object.
 */
 
@@ -20,28 +20,26 @@
    * @param pre_error double - default to zero.
    * @param integral double - default to zero.
    */
-PIDController::PIDController(double dt, double max, double min, double Kp, double Kd, double Ki) :
-		dt(dt),
-		max(max),
-		min(min),
-		Kp(Kp),
-		Kd(Kd),
-		Ki(Ki),
-		pre_error(0),
-		integral(0)
+PIDController::PIDController(double dt, double max, double min, double Kp,
+                             double Kd, double Ki)
+    :
+      dt(dt),
+      max(max),
+      min(min),
+      Kp(Kp),
+      Kd(Kd),
+      Ki(Ki),
+      pre_error(0),
+      integral(0)
 {
 }
-PIDController::~PIDController(){
-
+PIDController::~PIDController() {
 }
-
 /** @brief Compute the correction based on the set point and process variable
-   * @param [in] setPoint a double for the current setpoint for the plant's output
-   * @param [in] processVariable a double for the current measurement.
-
-   */
-double PIDController::compute(double setpoint, double pv){
-
+ * @param [in] setpoint a double for the current setpoint for the plant's output
+ * @param [in] pv a double for the current measurement of the process variable
+ */
+double PIDController::compute(double setpoint, double pv) {
   // This implementation assumes that this method will be called
   // repeatedly at intervals equal to dt by a client of the
   // PIDController object
@@ -62,7 +60,7 @@ double PIDController::compute(double setpoint, double pv){
   // apply the correction factor's maximum and minimum allowable
   // values specified in the private variables max and min
   // (this purpose for the min/max communicated in private e-mail
-  //  with DGellman 2017-02-22
+  //  with DGellman 2017-02-22)
   double correction = Kp * error + Ki * integral + Kd * derivative;
   if (correction > max)
     correction = max;
@@ -71,27 +69,51 @@ double PIDController::compute(double setpoint, double pv){
 
   return correction;
 }
-double PIDController::getKi(){
-	return Ki;
+/** @brief Return current setting for coefficient Ki
+ *
+ */
+double PIDController::getKi() {
+  return Ki;
 }
-double PIDController::getKp(){
-	return Kp;
+/** @brief Return current setting for coefficient Kp
+ *
+ */
+double PIDController::getKp() {
+  return Kp;
 }
-double PIDController::getKd(){
-	return Kd;
+/** @brief Return current setting for coefficient Kd
+ *
+ */
+double PIDController::getKd() {
+  return Kd;
 }
-double PIDController::getMax(){
-	return max;
+/** @brief Return current setting for correction maximum value
+ *
+ */
+double PIDController::getMax() {
+  return max;
 }
-double PIDController::getMin(){
-	return min;
+/** @brief Return current setting for correction minimum value
+ *
+ */
+double PIDController::getMin() {
+  return min;
 }
-double PIDController::getDt(){
-	return dt;
+/** @brief Return current setting for duration of time between compute calls
+ *
+ */
+double PIDController::getDt() {
+  return dt;
 }
-double PIDController::getIntegral(){
-	return integral;
+/** @brief Return current value of the internal error integral
+ *
+ */
+double PIDController::getIntegral() {
+  return integral;
 }
-double PIDController::getPre_Error(){
-	return pre_error;
+/** @brief Return current value for the internal "previous error" store
+ *
+ */
+double PIDController::getPre_Error() {
+  return pre_error;
 }
